@@ -1,0 +1,12 @@
+Order deny,allow
+Deny from all
+
+AuthUserFile "/kunden/homepages/25/d380365996/htdocs/game/private/.htpasswd"
+AuthType Basic
+AuthName "Game"
+Require valid-user
+
+Allow from ::1
+Satisfy Any
+
+RewriteEngine On
