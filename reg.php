@@ -33,8 +33,3 @@ if($POST['password'] != $_POST['password2'])
 if($POST['email'] == '')
     print("Email missing. <br>");
 
-
-
-
-
-
