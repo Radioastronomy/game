@@ -6,6 +6,7 @@
 ?>
 <h2>Welcome mortals</h2>
 
+
     <hr/>
 <pre>
     <?=print_r($_SERVER)?>
