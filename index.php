@@ -10,7 +10,10 @@ $db = new PDO(
     charset=UTF-8',
     'dbo416507421', 'tabletopapples');
 
-$result = mysql_query('SELECT * from testtable1 WHERE 1') or die(mysql_error());
+
+foreach($db->query('SELECT * FROM testtable1') as $row) {
+    echo $row['field1'].' '.$row['field2']; //etc...
+}
 
 ?>
 
@@ -22,5 +25,5 @@ $result = mysql_query('SELECT * from testtable1 WHERE 1') or die(mysql_error());
 
 
 <pre>
-    <?=print_r($_SERVER)?>
+
 </pre>
