@@ -23,7 +23,7 @@ class PDOQueryBuilder
      * @return string
      */
     public static function update($table,array $values,array $conditions) {
-        //TODO:: Implement
+        return 'UPDATE `'.$table.'` SET '.implode(',',self::buildValues($values)).' WHERE '.implode(' AND ',self::buildValues($conditions,true));
     }
 
     /**
