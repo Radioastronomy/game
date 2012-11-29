@@ -19,11 +19,12 @@ try {
 }
 
 //Run Query
-$statement = "SELECT * FROM `testtable1` WHERE `FirstName` = :first";
+$statement = "SELECT * FROM `testtable1` WHERE `FirstName` = 'John'";
 $query = $pdo->prepare($statement);
-$query->execute(array(
-    ':first' => 'John'
-));
+$query->execute(//array(
+    //':first' => 'John'
+//)
+);
 $result = $query->fetchAll();
 
 //Show results

@@ -6,9 +6,9 @@
  * Time: 11:42
  * To change this template use File | Settings | File Templates.
  */
+
+include("factory.php");
 echo "<h2>Register</h2> ";
-
-
 print
     ("
             <hr/>
@@ -17,19 +17,49 @@ print
             Password: <br> <input type='password' name='password' ><br>
             Confirm Password: <br>  <input type='password' name='password2'><br>
             Email: <br>  <input type='text' name='email' value='{$_POST["email"]}'><br>
-            <input type='submit' value='Submit'>
+            <input type='submit' name='submit' value='Submit'>
             </form>
     ");
 
-if($_POST['username']  == '')
-    print("User name missing. <br>");
+if (isset($_POST['submit']))
+{
 
-if($POST['password'] == '')
-    print("Password missing. <br>");
+    print("<font color='red'>");
 
-if($POST['password'] != $_POST['password2'])
-    print("Passwords do not match. <br>");
+    $ready = true;
+    if ($_POST['username'] == '') {
+        $ready = false;
+        print("User name missing. <br>");
+    }
 
-if($POST['email'] == '')
-    print("Email missing. <br>");
+    if ($POST['password'] == '') {
+        $ready = false;
+        print("Password missing. <br>");
+    }
+
+    if ($POST['password'] != $_POST['password2']) {
+        $ready = false;
+        print("Passwords do not match. <br>");
+    }
+
+    if ($POST['email'] == '') {
+        $ready = false;
+        print("Email missing. <br>");
+    }
+
+    if($ready)
+    {
+        //Submit information to database here
+    }
+}
+    $pdo = Factory::getPdo();
+    $query = Factory::query($pdo, "SELECT * FROM `testtable1`");
+    echo '<pre>';
+    print_r($query);
+    echo '<pre>';
+    //print(Factory::query(Factory::getPdo(), "SELECT * FROM `testtable1` WHERE `FirstName` = `John`"));
+?>
+
+
+
 

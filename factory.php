@@ -3,9 +3,9 @@
     {
 
 
-        public static function connectToDatabase()
+        public static function getPdo()
         {
-            global $pdo;
+
 
             try {
 
@@ -18,11 +18,18 @@
             } catch (PDOException $e) {
                 die('cant pdo: '. $e->getMessage());
             }
+
+            return $pdo;
         }
 
-        public static function queryAndOutput($string)
+        public static function query($pdo, $queryString)
         {
-            //Database connect stuff here
+            $statement = $queryString;
+            $query = $pdo->prepare($statement);
+            $query->execute();
+            $result = $query->fetchAll();
+
+            return $result;
         }
 
         public static function closeDatabaseConnection()
