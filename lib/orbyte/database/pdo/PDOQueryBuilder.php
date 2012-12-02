@@ -32,7 +32,10 @@ class PDOQueryBuilder
      * @return string
      */
     public static function insert($table,array $values) {
-        return 'INSERT INTO `'.$table.'` (`'.implode('`,`',$values).'`) VALUES (:'.implode(',:',$values).');';
+       // return 'INSERT INTO `'.$table.'` (`'.implode('`,`',$values).'`) VALUES (:'.implode(',:',$values).');';
+
+        return 'INSERT INTO '.$table.' ('.implode(', ',array_keys($values)).') VALUES (\''.implode('\',\'',array_values($values)).'\')  ';
+        //return 'INSERT INTO `'.$table.'` (`'.implode('`,`',array_values($values)).'`) VALUES  ('.implode(', ',array_keys($values)).');  ';
     }
 
     /**
