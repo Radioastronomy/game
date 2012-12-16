@@ -69,12 +69,12 @@ if (!isset($_COOKIE['status'])) {
             $pdo = Factory::getPdo();
             $statement = PDOQueryBuilder::insert("userdb", array("username" => $_POST['username'], "email" => $_POST['email'], "password" => $_POST['password']));
             print($statement);
-            Factory::query($pdo, $statement);
+            Factory::queryNoResult($pdo, $statement);
 
 
             print('
                     <script type="text/javascript">
-                        window.location = "http://www.google.com/"
+                        window.location = "reg_complete.php"
                     </script>
                 ');
             die();

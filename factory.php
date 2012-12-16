@@ -32,6 +32,14 @@
             return $result;
         }
 
+        public static function queryNoResult($pdo, $queryString)
+        {
+            $statement = $queryString;
+            $query = $pdo->prepare($statement);
+            $query->execute();
+
+        }
+
         public static function closeDatabaseConnection()
         {
             global $pdo;
